@@ -1,12 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ShareRecipes"
     x:Class="ShareRecipes.MainPage">
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!"
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand" />
+        <StackLayout>
+            <ListView x:Name="ToCatchList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding DexNum, StringFormat='#{0}'}" />
+                                    <Label Text="{Binding Name}" />
+                                    <Label Text="{Binding RoutesSeen, StringFormat='Seen on Route(s): {0}'}" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </StackLayout>
 </ContentPage>
