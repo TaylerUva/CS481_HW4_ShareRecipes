@@ -10,12 +10,18 @@
         <Label HorizontalTextAlignment="Center"
             TextColor="White"
             FontAttributes="Bold"
-            Text="Gen 1 Pokemon to catch" />
+            Text="LiveDex Tracker" />
+        <Label
+            x:Name="Caught"
+            HorizontalTextAlignment="Center"
+            TextColor="White"
+            FontAttributes="Bold"/>
         <ListView x:Name="ToCatchList"
             BackgroundColor="#34393D"
             ItemTapped="Handle_ItemTapped"
             IsPullToRefreshEnabled="true"
-            Refreshing="Handle_Refreshing" SeparatorColor="White">
+            Refreshing="Handle_Refreshing"
+            SeparatorColor="White">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

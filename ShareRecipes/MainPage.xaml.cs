@@ -27,12 +27,17 @@ namespace ShareRecipes {
         const string ELV = "Evolving";
         const string LAB = "Oak's Lab";
 
+        int amountCaught = -1;
+        int dexEntry = 1;
+
         private string getIcon(string name) {
             return "https://img.pokemondb.net/sprites/sun-moon/icon/" + name.ToLower() + ".png";
         }
 
         private void PopulatePokedex() {
-            int dexEntry = 1;
+
+            amountCaught = -1;
+            dexEntry = 1;
 
             addPokemon("Bulbasaur", dexEntry++, LAB, TYPE_GRASS);
             addPokemon("Ivysaur", dexEntry++, ELV, TYPE_GRASS);
@@ -50,6 +55,8 @@ namespace ShareRecipes {
             addPokemon("Metapod", dexEntry++, "Viridian Forest", TYPE_BUG);
             addPokemon("Butterfree", dexEntry++, "Viridian Forest", TYPE_BUG);
 
+            updateCaughtText();
+
             ToCatchList.ItemsSource = pokedex;
         }
 
@@ -64,10 +71,15 @@ namespace ShareRecipes {
             pokedex.Add(newMon);
         }
 
+        void updateCaughtText() {
+            Caught.Text = "Caught: " + ++amountCaught + " of " + (dexEntry - 1);
+        }
+
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
             var tapped = sender as ListView;
             var tappedPokemon = tapped.SelectedItem as Pokemon;
             pokedex.Remove(tappedPokemon);
+            updateCaughtText();
         }
 
         void Handle_Refreshing(object sender, System.EventArgs e) {
