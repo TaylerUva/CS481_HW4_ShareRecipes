@@ -15,7 +15,7 @@
             BackgroundColor="#34393D"
             ItemTapped="Handle_ItemTapped"
             IsPullToRefreshEnabled="true"
-            Refreshing="Handle_Refreshing">
+            Refreshing="Handle_Refreshing" SeparatorColor="White">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -41,7 +41,7 @@
                                     Orientation="Horizontal">
                                     <Label TextColor="White"
                                         FontAttributes="Bold"
-                                        Text="{Binding DexNum, StringFormat='#{0}'}" />
+                                        Text="{Binding DexNum, StringFormat='# {0}'}" />
                                     <Label TextColor="White"
                                         FontAttributes="Bold"
                                         Text="{Binding Name}" />

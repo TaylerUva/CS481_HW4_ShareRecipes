@@ -21,13 +21,14 @@ namespace ShareRecipes {
         const string TYPE_FIRE = "#FA7C00";
         const string TYPE_GRASS = "#32CD32";
         const string TYPE_WATER = "#6890F0";
+        const string TYPE_BUG = "#A8B820";
 
         // Locations
         const string ELV = "Evolving";
         const string LAB = "Oak's Lab";
 
         private string getIcon(string name) {
-            return "https://img.pokemondb.net/sprites/sun-moon/icon/" + name + ".png";
+            return "https://img.pokemondb.net/sprites/sun-moon/icon/" + name.ToLower() + ".png";
         }
 
         private void PopulatePokedex() {
@@ -45,6 +46,10 @@ namespace ShareRecipes {
             addPokemon("Wartortle", dexEntry++, ELV, TYPE_WATER);
             addPokemon("Blastoise", dexEntry++, ELV, TYPE_WATER);
 
+            addPokemon("Caterpie", dexEntry++, "Route 2, Viridian Forest", TYPE_BUG);
+            addPokemon("Metapod", dexEntry++, "Viridian Forest", TYPE_BUG);
+            addPokemon("Butterfree", dexEntry++, "Viridian Forest", TYPE_BUG);
+
             ToCatchList.ItemsSource = pokedex;
         }
 
@@ -53,7 +58,7 @@ namespace ShareRecipes {
                 Name = name,
                 DexNum = dexNum.ToString("D3"),
                 Obtained = obtained,
-                Sprite = getIcon(name.ToLower()),
+                Sprite = getIcon(name),
                 Type = type
             };
             pokedex.Add(newMon);
