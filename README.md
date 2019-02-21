@@ -11,3 +11,8 @@ In this assignment, you are asked to create an app that shares great recipes or 
 3. The app should show some information about the content. Example: Label with the recipe name and short info about it.
 4. When the user taps on a ListView item it should be deleted from your list. Then if the user performs a Pull to Refresh all items should come back into the ListView.
 5. At least 5 ListView items need to be displayed, hard-coding the data to be shown in the list view is fine
+
+## To Do
+
+- add game dependent locations
+- add more room for locations

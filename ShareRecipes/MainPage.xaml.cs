@@ -17,62 +17,141 @@ namespace ShareRecipes {
             PopulatePokedex();
         }
 
-        // Type
-        const string TYPE_FIRE = "#FA7C00";
-        const string TYPE_GRASS = "#32CD32";
-        const string TYPE_WATER = "#6890F0";
-        const string TYPE_BUG = "#A8B820";
+        enum pkmType {
+            NORMAL,
+            FIGHTING,
+            FLYING,
+            POISON,
+            GROUND,
+            ROCK,
+            BUG,
+            GHOST,
+            STEEL,
+            FIRE,
+            WATER,
+            GRASS,
+            ELECTRIC,
+            PSYCHIC,
+            ICE,
+            DRAGON,
+            DARK,
+            FAIRY
+        }
 
         // Locations
-        const string ELV = "Evolving";
+        const string EVOLVE = "Evolving";
         const string LAB = "Oak's Lab";
 
         int amountCaught = -1;
         int dexEntry = 1;
-
-        private string getIcon(string name) {
-            return "https://img.pokemondb.net/sprites/sun-moon/icon/" + name.ToLower() + ".png";
-        }
 
         private void PopulatePokedex() {
 
             amountCaught = -1;
             dexEntry = 1;
 
-            addPokemon("Bulbasaur", dexEntry++, LAB, TYPE_GRASS);
-            addPokemon("Ivysaur", dexEntry++, ELV, TYPE_GRASS);
-            addPokemon("Venusaur", dexEntry++, ELV, TYPE_GRASS);
+            addPokemon("Bulbasaur", dexEntry++, LAB, pkmType.GRASS);
+            addPokemon("Ivysaur", dexEntry++, EVOLVE, pkmType.GRASS);
+            addPokemon("Venusaur", dexEntry++, EVOLVE, pkmType.GRASS);
 
-            addPokemon("Charmander", dexEntry++, LAB, TYPE_FIRE);
-            addPokemon("Charmeleon", dexEntry++, ELV, TYPE_FIRE);
-            addPokemon("Charizard", dexEntry++, ELV, TYPE_FIRE);
+            addPokemon("Charmander", dexEntry++, LAB, pkmType.FIRE);
+            addPokemon("Charmeleon", dexEntry++, EVOLVE, pkmType.FIRE);
+            addPokemon("Charizard", dexEntry++, EVOLVE, pkmType.FIRE);
 
-            addPokemon("Squirtle", dexEntry++, LAB, TYPE_WATER);
-            addPokemon("Wartortle", dexEntry++, ELV, TYPE_WATER);
-            addPokemon("Blastoise", dexEntry++, ELV, TYPE_WATER);
+            addPokemon("Squirtle", dexEntry++, LAB, pkmType.WATER);
+            addPokemon("Wartortle", dexEntry++, EVOLVE, pkmType.WATER);
+            addPokemon("Blastoise", dexEntry++, EVOLVE, pkmType.WATER);
 
-            addPokemon("Caterpie", dexEntry++, "Route 2, Viridian Forest", TYPE_BUG);
-            addPokemon("Metapod", dexEntry++, "Viridian Forest", TYPE_BUG);
-            addPokemon("Butterfree", dexEntry++, "Viridian Forest", TYPE_BUG);
+            addPokemon("Caterpie", dexEntry++, "Rt. 2, Viridian Forest", pkmType.BUG);
+            addPokemon("Metapod", dexEntry++, "Viridian Forest", pkmType.BUG);
+            addPokemon("Butterfree", dexEntry++, "Viridian Forest", pkmType.BUG);
+
+            addPokemon("Weedle", dexEntry++, "Rt. 2, Viridian Forest", pkmType.BUG);
+            addPokemon("Kakuna", dexEntry++, "Viridian Forest", pkmType.BUG);
+            addPokemon("Beedrill", dexEntry++, "Viridian Forest", pkmType.BUG);
+
+            addPokemon("Pidgey", dexEntry++, "Many", pkmType.FLYING);
+            addPokemon("Pidgeotto", dexEntry++, "Many", pkmType.FLYING);
+            addPokemon("Pidgeot", dexEntry++, "Many", pkmType.FLYING);
+
+            addPokemon("Rattata", dexEntry++, "Many", pkmType.NORMAL);
+            addPokemon("Raticate", dexEntry++, "Many", pkmType.NORMAL);
+
+            addPokemon("Spearow", dexEntry++, "Many", pkmType.FLYING);
+            addPokemon("Fearow", dexEntry++, "Many", pkmType.FLYING);
+
+            addPokemon("Ekans", dexEntry++, "Route 3, Route 4", pkmType.POISON);
+            addPokemon("Arbok", dexEntry++, EVOLVE, pkmType.POISON);
+
+            addPokemon("Pikachu", dexEntry++, "Viridian Forest", pkmType.ELECTRIC);
+            addPokemon("Raichu", dexEntry++, EVOLVE, pkmType.ELECTRIC);
 
             updateCaughtText();
 
             ToCatchList.ItemsSource = pokedex;
         }
 
-        void addPokemon(string name, int dexNum, string obtained, string type) {
+        void updateCaughtText() {
+            Caught.Text = "Caught: " + ++amountCaught + " of " + (dexEntry - 1);
+        }
+
+        void addPokemon(string name, int dexNum, string obtained, pkmType type) {
             Pokemon newMon = new Pokemon {
                 Name = name,
                 DexNum = dexNum.ToString("D3"),
                 Obtained = obtained,
                 Sprite = getIcon(name),
-                Type = type
+                Type = getTypeColor(type)
             };
             pokedex.Add(newMon);
         }
 
-        void updateCaughtText() {
-            Caught.Text = "Caught: " + ++amountCaught + " of " + (dexEntry - 1);
+        // Get Pokemon Data
+        private string getIcon(string name) {
+            return "https://img.pokemondb.net/sprites/sun-moon/icon/" + name.ToLower() + ".png";
+        }
+
+        private string getTypeColor(pkmType type) {
+            switch (type) {
+            case pkmType.NORMAL:
+                return "#A8A878";
+            case pkmType.FIGHTING:
+                return "#C03028";
+            case pkmType.FLYING:
+                return "#A891F0";
+            case pkmType.POISON:
+                return "#A040A0";
+            case pkmType.GROUND:
+                return "#E0C068";
+            case pkmType.ROCK:
+                return "#B8A038";
+            case pkmType.BUG:
+                return "#A8B820";
+            case pkmType.GHOST:
+                return "#705898";
+            case pkmType.STEEL:
+                return "#B8B8D0";
+            case pkmType.FIRE:
+                return "#FA7C00";
+            case pkmType.WATER:
+                return "#6890F0";
+            case pkmType.GRASS:
+                return "#32CD32";
+            case pkmType.ELECTRIC:
+                return "#FFC631";
+            case pkmType.PSYCHIC:
+                return "#F85888";
+            case pkmType.ICE:
+                return "#98D8D8";
+            case pkmType.DRAGON:
+                return "#7038F8";
+            case pkmType.DARK:
+                return "#705848";
+            case pkmType.FAIRY:
+                return "#EE99AC";
+            default:
+                return "#68A090";
+            }
         }
 
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
