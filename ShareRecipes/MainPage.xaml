@@ -12,7 +12,7 @@
             FontAttributes="Bold"
             Text="Gen 1 Pokemon to catch" />
         <ListView x:Name="ToCatchList"
-            BackgroundColor="#34393D">
+            BackgroundColor="#34393D" ItemTapped="Handle_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

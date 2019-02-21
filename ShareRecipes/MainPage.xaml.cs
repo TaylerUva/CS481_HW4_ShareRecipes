@@ -8,6 +8,10 @@ using Xamarin.Forms;
 
 namespace ShareRecipes {
     public partial class MainPage : ContentPage {
+
+
+        ObservableCollection<Pokemon> pokedex = new ObservableCollection<Pokemon>();
+
         public MainPage() {
             InitializeComponent();
             PopulateListView();
@@ -27,7 +31,6 @@ namespace ShareRecipes {
         }
 
         private void PopulateListView() {
-            var pokedex = new ObservableCollection<Pokemon>();
 
             var dex001 = new Pokemon {
                 Name = "Bulbasuar",
@@ -103,6 +106,12 @@ namespace ShareRecipes {
             }; pokedex.Add(dex009);
 
             ToCatchList.ItemsSource = pokedex;
+        }
+
+        void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
+            var tapped = sender as ListView;
+            var tappedPokemon = tapped.SelectedItem as Pokemon;
+            pokedex.Remove(tappedPokemon);
         }
     }
 }
