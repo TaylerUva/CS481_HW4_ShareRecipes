@@ -2,24 +2,59 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ShareRecipes"
-    x:Class="ShareRecipes.MainPage">
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    x:Class="ShareRecipes.MainPage"
+    BackgroundColor="#990D11">
     <StackLayout>
-        <StackLayout>
-            <ListView x:Name="ToCatchList">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding DexNum, StringFormat='#{0}'}" />
-                                    <Label Text="{Binding Name}" />
-                                    <Label Text="{Binding RoutesSeen, StringFormat='Seen on Route(s): {0}'}" />
+        <Label HorizontalTextAlignment="Center"
+            TextColor="White"
+            FontAttributes="Bold"
+            Text="Pokemon to catch" />
+        <ListView x:Name="ToCatchList"
+            BackgroundColor="#34393D">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid BackgroundColor="{Binding Type}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Column="0"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Margin="5,0,0,0"
+                                    Aspect="AspectFill"
+                                    WidthRequest="45"
+                                    Source="{Binding Sprite}" />
+                                <StackLayout Grid.Column="1"
+                                    Grid.Row="0"
+                                    Orientation="Horizontal">
+                                    <Label TextColor="White"
+                                        FontAttributes="Bold"
+                                        Text="{Binding DexNum, StringFormat='#{0}'}" />
+                                    <Label TextColor="White"
+                                        FontAttributes="Bold"
+                                        Text="{Binding Name}" />
                                 </StackLayout>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+                                <StackLayout Grid.Column="1"
+                                    Grid.Row="1"
+                                    Orientation="Horizontal">
+                                    <Label TextColor="White"
+                                        FontAttributes="Bold"
+                                        Text="{Binding RoutesSeen, StringFormat='Seen on Route(s): {0}'}" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>

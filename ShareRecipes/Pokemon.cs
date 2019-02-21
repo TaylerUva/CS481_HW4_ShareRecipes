@@ -13,5 +13,14 @@ namespace ShareRecipes {
             get;
             set;
         }
+        public string Sprite {
+            get;
+            set;
+        }
+
+        public string Type {
+            get;
+            set;
+        }
     }
 }
