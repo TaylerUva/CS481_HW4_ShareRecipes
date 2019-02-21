@@ -57,7 +57,7 @@
                                     Orientation="Horizontal">
                                     <Label TextColor="White"
                                         FontAttributes="Bold"
-                                        Text="{Binding Obtained, StringFormat='Obtained by/at: {0}'}" />
+                                        Text="{Binding Obtained}" />
                                 </StackLayout>
                             </Grid>
                         </ViewCell.View>

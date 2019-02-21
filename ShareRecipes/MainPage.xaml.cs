@@ -39,7 +39,8 @@ namespace ShareRecipes {
         }
 
         // Locations
-        const string EVOLVE = "Evolving";
+        const string EVOLVE = "Evolve ";
+        const string TRADE = "Trade ";
         const string LAB = "Oak's Lab";
 
         int amountCaught = -1;
@@ -70,21 +71,24 @@ namespace ShareRecipes {
             addPokemon("Kakuna", dexEntry++, "Viridian Forest", pkmType.BUG);
             addPokemon("Beedrill", dexEntry++, "Viridian Forest", pkmType.BUG);
 
-            addPokemon("Pidgey", dexEntry++, "Many", pkmType.FLYING);
-            addPokemon("Pidgeotto", dexEntry++, "Many", pkmType.FLYING);
-            addPokemon("Pidgeot", dexEntry++, "Many", pkmType.FLYING);
+            addPokemon("Pidgey", dexEntry++, "Rts(1, 2, 5-8, 11-21, 24, 25), Viridian Forest", pkmType.FLYING);
+            addPokemon("Pidgeotto", dexEntry++, "Rts(1, 2, 5-8, 11-21, 24, 25), Viridian Forest", pkmType.FLYING);
+            addPokemon("Pidgeot", dexEntry++, "Rts(1, 2, 5-8, 11-21, 24, 25), Viridian Forest", pkmType.FLYING);
 
-            addPokemon("Rattata", dexEntry++, "Many", pkmType.NORMAL);
-            addPokemon("Raticate", dexEntry++, "Many", pkmType.NORMAL);
+            addPokemon("Rattata", dexEntry++, "Rts(1-11, 16-18, 21, 22), Pokemon Mansion", pkmType.NORMAL);
+            addPokemon("Raticate", dexEntry++, "Rts(7-11, 16-18, 21), Pokemon Mansion", pkmType.NORMAL);
 
-            addPokemon("Spearow", dexEntry++, "Many", pkmType.FLYING);
-            addPokemon("Fearow", dexEntry++, "Many", pkmType.FLYING);
+            addPokemon("Spearow", dexEntry++, "Rts(3, 4, 9, 10, 22, 23)", pkmType.FLYING);
+            addPokemon("Fearow", dexEntry++, "Rts(3, 4, 9, 10, 22, 23)", pkmType.FLYING);
 
             addPokemon("Ekans", dexEntry++, "Route 3, Route 4", pkmType.POISON);
             addPokemon("Arbok", dexEntry++, EVOLVE, pkmType.POISON);
 
             addPokemon("Pikachu", dexEntry++, "Viridian Forest", pkmType.ELECTRIC);
             addPokemon("Raichu", dexEntry++, EVOLVE, pkmType.ELECTRIC);
+
+            addPokemon("Sandshrew", dexEntry++, TRADE, pkmType.GROUND);
+            addPokemon("Sandslash", dexEntry++, EVOLVE, pkmType.GROUND);
 
             updateCaughtText();
 
