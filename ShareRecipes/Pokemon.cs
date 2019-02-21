@@ -9,7 +9,7 @@ namespace ShareRecipes {
             get;
             set;
         }
-        public string RoutesSeen {
+        public string Obtained {
             get;
             set;
         }

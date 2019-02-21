@@ -10,7 +10,7 @@
         <Label HorizontalTextAlignment="Center"
             TextColor="White"
             FontAttributes="Bold"
-            Text="Pokemon to catch" />
+            Text="Gen 1 Pokemon to catch" />
         <ListView x:Name="ToCatchList"
             BackgroundColor="#34393D">
             <ListView.ItemTemplate>
@@ -36,19 +36,22 @@
                                 <StackLayout Grid.Column="1"
                                     Grid.Row="0"
                                     Orientation="Horizontal">
-                                    <Label TextColor="White"
+                                    <Label
+                                        TextColor="White"
                                         FontAttributes="Bold"
                                         Text="{Binding DexNum, StringFormat='#{0}'}" />
-                                    <Label TextColor="White"
+                                    <Label
+                                        TextColor="White"
                                         FontAttributes="Bold"
                                         Text="{Binding Name}" />
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                     Grid.Row="1"
                                     Orientation="Horizontal">
-                                    <Label TextColor="White"
+                                    <Label
+                                        TextColor="White"
                                         FontAttributes="Bold"
-                                        Text="{Binding RoutesSeen, StringFormat='Seen on Route(s): {0}'}" />
+                                        Text="{Binding Obtained, StringFormat='Obtained by/at: {0}'}" />
                                 </StackLayout>
                             </Grid>
                         </ViewCell.View>
