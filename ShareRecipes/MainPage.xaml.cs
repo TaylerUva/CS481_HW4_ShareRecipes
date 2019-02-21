@@ -31,81 +31,32 @@ namespace ShareRecipes {
         }
 
         private void PopulatePokedex() {
+            int dexEntry = 1;
 
-            var dex001 = new Pokemon {
-                Name = "Bulbasuar",
-                DexNum = "001",
-                Obtained = LAB,
-                Sprite = getIcon("bulbasaur"),
-                Type = TYPE_GRASS
-            }; pokedex.Add(dex001);
+            addPokemon("Bulbasaur", dexEntry++, LAB, TYPE_GRASS);
+            addPokemon("Ivysaur", dexEntry++, ELV, TYPE_GRASS);
+            addPokemon("Venusaur", dexEntry++, ELV, TYPE_GRASS);
 
-            var dex002 = new Pokemon {
-                Name = "Ivysaur",
-                DexNum = "002",
-                Obtained = ELV,
-                Sprite = getIcon("ivysaur"),
-                Type = TYPE_GRASS
-            }; pokedex.Add(dex002);
+            addPokemon("Charmander", dexEntry++, LAB, TYPE_FIRE);
+            addPokemon("Charmeleon", dexEntry++, ELV, TYPE_FIRE);
+            addPokemon("Charizard", dexEntry++, ELV, TYPE_FIRE);
 
-            var dex003 = new Pokemon {
-                Name = "Venusaur",
-                DexNum = "003",
-                Obtained = ELV,
-                Sprite = getIcon("venusaur"),
-                Type = TYPE_GRASS
-            }; pokedex.Add(dex003);
-
-            var dex004 = new Pokemon {
-                Name = "Charmander",
-                DexNum = "004",
-                Obtained = LAB,
-                Sprite = getIcon("charmander"),
-                Type = TYPE_FIRE
-            }; pokedex.Add(dex004);
-
-            var dex005 = new Pokemon {
-                Name = "Charmeleon",
-                DexNum = "005",
-                Obtained = ELV,
-                Sprite = getIcon("charmeleon"),
-                Type = TYPE_FIRE
-            }; pokedex.Add(dex005);
-
-            var dex006 = new Pokemon {
-                Name = "Charizard",
-                DexNum = "006",
-                Obtained = ELV,
-                Sprite = getIcon("charizard"),
-                Type = TYPE_FIRE
-            }; pokedex.Add(dex006);
-
-
-            var dex007 = new Pokemon {
-                Name = "Squirtle",
-                DexNum = "007",
-                Obtained = LAB,
-                Sprite = getIcon("squirtle"),
-                Type = TYPE_WATER
-            }; pokedex.Add(dex007);
-
-            var dex008 = new Pokemon {
-                Name = "Wartortle",
-                DexNum = "008",
-                Obtained = ELV,
-                Sprite = getIcon("wartortle"),
-                Type = TYPE_WATER
-            }; pokedex.Add(dex008);
-
-            var dex009 = new Pokemon {
-                Name = "Blastoise",
-                DexNum = "009",
-                Obtained = ELV,
-                Sprite = getIcon("blastoise"),
-                Type = TYPE_WATER
-            }; pokedex.Add(dex009);
+            addPokemon("Squirtle", dexEntry++, LAB, TYPE_WATER);
+            addPokemon("Wartortle", dexEntry++, ELV, TYPE_WATER);
+            addPokemon("Blastoise", dexEntry++, ELV, TYPE_WATER);
 
             ToCatchList.ItemsSource = pokedex;
+        }
+
+        void addPokemon(string name, int dexNum, string obtained, string type) {
+            Pokemon newMon = new Pokemon {
+                Name = name,
+                DexNum = dexNum.ToString("D3"),
+                Obtained = obtained,
+                Sprite = getIcon(name.ToLower()),
+                Type = type
+            };
+            pokedex.Add(newMon);
         }
 
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
