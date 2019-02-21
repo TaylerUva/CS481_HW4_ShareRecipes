@@ -12,7 +12,10 @@
             FontAttributes="Bold"
             Text="Gen 1 Pokemon to catch" />
         <ListView x:Name="ToCatchList"
-            BackgroundColor="#34393D" ItemTapped="Handle_ItemTapped">
+            BackgroundColor="#34393D"
+            ItemTapped="Handle_ItemTapped"
+            IsPullToRefreshEnabled="true"
+            Refreshing="Handle_Refreshing">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -36,20 +39,17 @@
                                 <StackLayout Grid.Column="1"
                                     Grid.Row="0"
                                     Orientation="Horizontal">
-                                    <Label
-                                        TextColor="White"
+                                    <Label TextColor="White"
                                         FontAttributes="Bold"
                                         Text="{Binding DexNum, StringFormat='#{0}'}" />
-                                    <Label
-                                        TextColor="White"
+                                    <Label TextColor="White"
                                         FontAttributes="Bold"
                                         Text="{Binding Name}" />
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                     Grid.Row="1"
                                     Orientation="Horizontal">
-                                    <Label
-                                        TextColor="White"
+                                    <Label TextColor="White"
                                         FontAttributes="Bold"
                                         Text="{Binding Obtained, StringFormat='Obtained by/at: {0}'}" />
                                 </StackLayout>

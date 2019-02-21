@@ -14,7 +14,7 @@ namespace ShareRecipes {
 
         public MainPage() {
             InitializeComponent();
-            PopulateListView();
+            PopulatePokedex();
         }
 
         // Type
@@ -30,7 +30,7 @@ namespace ShareRecipes {
             return "https://img.pokemondb.net/sprites/sun-moon/icon/" + name + ".png";
         }
 
-        private void PopulateListView() {
+        private void PopulatePokedex() {
 
             var dex001 = new Pokemon {
                 Name = "Bulbasuar",
@@ -112,6 +112,14 @@ namespace ShareRecipes {
             var tapped = sender as ListView;
             var tappedPokemon = tapped.SelectedItem as Pokemon;
             pokedex.Remove(tappedPokemon);
+        }
+
+        void Handle_Refreshing(object sender, System.EventArgs e) {
+            pokedex.Clear();
+            PopulatePokedex();
+
+            // Remember you have to set IsRefreshing False
+            ToCatchList.IsRefreshing = false;
         }
     }
 }
